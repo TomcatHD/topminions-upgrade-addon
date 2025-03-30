@@ -1,0 +1,17 @@
+# Java build folders
+target/
+build/
+
+# IDE settings
+.idea/
+*.iml
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Backup files
+*~
