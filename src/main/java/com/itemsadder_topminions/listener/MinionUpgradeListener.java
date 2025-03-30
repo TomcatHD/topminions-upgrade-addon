@@ -1,5 +1,6 @@
-package com.itemsadder_topminions;
+package com.itemsadder_topminions.listener;
 
+import com.itemsadder_topminions.gui.UpgradeMenu;
 import com.sarry20.topminion.event.minion.MinionUpgradeEvent;
 import com.sarry20.topminion.models.minion.MinionObj;
 import org.bukkit.event.EventHandler;

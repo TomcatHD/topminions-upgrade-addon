@@ -1,9 +1,10 @@
-package com.itemsadder_topminions;
+package com.itemsadder_topminions.command;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import com.itemsadder_topminions.config.ConfigHandler;
 
 public class ReloadCommand implements CommandExecutor {
 
@@ -14,7 +15,7 @@ public class ReloadCommand implements CommandExecutor {
             return true;
         }
 
-        itemsadder_topminions.reloadConfigs();
+        ConfigHandler.reload();
         sender.sendMessage(ChatColor.GREEN + "✔ Configs reloaded: upgrades.yml, crafting.yml, messages.yml, items.yml");
         return true;
     }

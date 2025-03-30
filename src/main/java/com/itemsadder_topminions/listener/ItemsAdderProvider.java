@@ -1,4 +1,4 @@
-package com.itemsadder_topminions;
+package com.itemsadder_topminions.listener;
 
 import dev.lone.itemsadder.api.ItemsAdder;
 import org.bukkit.Bukkit;

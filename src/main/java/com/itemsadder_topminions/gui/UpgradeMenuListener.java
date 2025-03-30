@@ -1,4 +1,4 @@
-package com.itemsadder_topminions;
+package com.itemsadder_topminions.gui;
 
 import com.sarry20.topminion.models.minion.MinionObj;
 import dev.lone.itemsadder.api.CustomStack;
@@ -12,6 +12,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
+import com.itemsadder_topminions.config.ConfigHandler;
 
 import java.util.*;
 
@@ -36,7 +37,7 @@ public class UpgradeMenuListener implements Listener {
         int nextLevel = currentLevel + 1;
 
         String key = minion.getType().toLowerCase() + "_" + minion.getMaterial().toString().toLowerCase();
-        FileConfiguration cfg = itemsadder_topminions.getUpgradesConfig();
+        FileConfiguration cfg = ConfigHandler.getUpgrades();
         String basePath = "upgrades." + key + ".levels." + currentLevel;
 
         if (!cfg.contains(basePath)) {

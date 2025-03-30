@@ -1,4 +1,4 @@
-package com.itemsadder_topminions;
+package com.itemsadder_topminions.gui;
 
 import dev.lone.itemsadder.api.CustomStack;
 import org.bukkit.Bukkit;
@@ -12,7 +12,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.NamespacedKey;
-import com.itemsadder_topminions.ItemUtil;
+import com.itemsadder_topminions.util.ItemUtil;
+import com.itemsadder_topminions.config.ConfigHandler;
 
 
 import com.sarry20.topminion.models.minion.MinionObj;
@@ -25,9 +26,9 @@ public class UpgradeMenu {
     private static final NamespacedKey minionKey = new NamespacedKey("topminion", "topminions");
 
     public static void openUpgradeGUI(Player player, MinionObj minion) {
-        FileConfiguration config = itemsadder_topminions.getUpgradesConfig();
-        FileConfiguration messages = itemsadder_topminions.getMessagesConfig();
-        FileConfiguration items = itemsadder_topminions.getItemsConfig();
+        FileConfiguration config = ConfigHandler.getUpgrades();
+        FileConfiguration messages = ConfigHandler.getMessages();
+        FileConfiguration items = ConfigHandler.getItems();
 
         String key = minion.getType().toLowerCase() + "_" + minion.getMaterial().toString().toLowerCase();
         int level = minion.getLevel();

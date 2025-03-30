@@ -1,4 +1,4 @@
-package com.itemsadder_topminions;
+package com.itemsadder_topminions.util;
 
 import dev.lone.itemsadder.api.CustomStack;
 import org.bukkit.ChatColor;
@@ -6,14 +6,16 @@ import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import com.itemsadder_topminions.config.ConfigHandler;
 
 import java.util.Arrays;
 
 public class ItemUtil {
 
     public static String getFriendlyName(String itemId) {
-        FileConfiguration messages = itemsadder_topminions.getMessagesConfig();
-        FileConfiguration items = itemsadder_topminions.getItemsConfig();
+        FileConfiguration messages = ConfigHandler.getMessages();
+        FileConfiguration items = ConfigHandler.getItems();
+
 
         if (itemId.startsWith("minion#")) {
             try {

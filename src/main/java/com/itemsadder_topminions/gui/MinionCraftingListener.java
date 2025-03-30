@@ -1,4 +1,4 @@
-package com.itemsadder_topminions;
+package com.itemsadder_topminions.gui;
 
 import org.bukkit.event.Listener;
 

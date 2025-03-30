@@ -1,5 +1,8 @@
-package com.itemsadder_topminions;
+package com.itemsadder_topminions.gui;
 
+import com.itemsadder_topminions.util.ItemUtil;
+import com.itemsadder_topminions.util.SkullUtil;
+import com.itemsadder_topminions.itemsadder_topminions;
 import com.sarry20.topminion.models.minion.MinionObj;
 import dev.lone.itemsadder.api.CustomStack;
 import org.bukkit.Bukkit;
@@ -20,8 +23,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-import com.itemsadder_topminions.SkullUtil;
-import com.itemsadder_topminions.ItemUtil;
+import com.itemsadder_topminions.config.ConfigHandler;
+
 
 
 
@@ -42,7 +45,7 @@ public class MinionCraftingMenu implements Listener {
         Player player = (Player) event.getWhoClicked();
 
         String expectedTitle = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&',
-                itemsadder_topminions.getCraftingConfig().getString("gui.title", "Craft Minion")));
+                ConfigHandler.getCrafting().getString("gui.title", "Craft Minion")));
 
         if (!ChatColor.stripColor(event.getView().getTitle()).equalsIgnoreCase(expectedTitle)) return;
 
@@ -110,7 +113,7 @@ public class MinionCraftingMenu implements Listener {
     public void onCraftingDrag(InventoryDragEvent event) {
         if (!(event.getWhoClicked() instanceof Player)) return;
         String expectedTitle = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&',
-                itemsadder_topminions.getCraftingConfig().getString("gui.title", "Craft Minion")));
+                ConfigHandler.getCrafting().getString("gui.title", "Craft Minion")));
 
         if (!ChatColor.stripColor(event.getView().getTitle()).equalsIgnoreCase(expectedTitle)) return;
 
@@ -130,7 +133,7 @@ public class MinionCraftingMenu implements Listener {
         Player player = (Player) event.getPlayer();
 
         String expectedTitle = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&',
-                itemsadder_topminions.getCraftingConfig().getString("gui.title", "Craft Minion")));
+                ConfigHandler.getCrafting().getString("gui.title", "Craft Minion")));
 
         if (!ChatColor.stripColor(event.getView().getTitle()).equalsIgnoreCase(expectedTitle)) return;
 
@@ -147,7 +150,7 @@ public class MinionCraftingMenu implements Listener {
 
 
     public static void openCraftingGUI(Player player, String type, String material, int level) {
-        FileConfiguration config = itemsadder_topminions.getCraftingConfig();
+        FileConfiguration config = ConfigHandler.getCrafting();
         String recipeKey = type.toLowerCase() + "_" + material.toLowerCase() + "_minion_" + level;
         String key = "levels." + level + ".recipes." + recipeKey;
 
@@ -200,7 +203,7 @@ public class MinionCraftingMenu implements Listener {
                     }
 
                     // Load display name template and texture from config
-                    String rawName = itemsadder_topminions.getMessagesConfig().getString(
+                    String rawName = ConfigHandler.getMessages().getString(
                             "minion-display-names." + minionType,
                             "&7" + minionType + " Minion"
                     );
@@ -208,7 +211,7 @@ public class MinionCraftingMenu implements Listener {
                             rawName.replace("{level}", String.valueOf(minionLevel)));
 
 
-                    String base64 = itemsadder_topminions.getMessagesConfig().getString(
+                    String base64 = ConfigHandler.getMessages().getString(
                             "minion-heads." + minionType
                     );
 
@@ -290,7 +293,7 @@ public class MinionCraftingMenu implements Listener {
 
         for (int slot : inputSlots) gui.setItem(slot, null);
 
-        FileConfiguration messages = itemsadder_topminions.getMessagesConfig();
+        FileConfiguration messages = ConfigHandler.getMessages();
         String name = ChatColor.translateAlternateColorCodes('&',
                 messages.getString("craft-button.not-ready.name", "&cCraft Minion"));
         List<String> lore = messages.getStringList("craft-button.not-ready.lore");
@@ -327,8 +330,8 @@ public class MinionCraftingMenu implements Listener {
     }
 
     private void updateCraftButton(Player player, Inventory inv) {
-        FileConfiguration config = itemsadder_topminions.getCraftingConfig();
-        FileConfiguration messages = itemsadder_topminions.getMessagesConfig();
+        FileConfiguration config = ConfigHandler.getCrafting();
+        FileConfiguration messages = ConfigHandler.getMessages();
 
         String recipeKey = lastRecipeKey.get(player.getUniqueId());
         if (recipeKey == null) return;
@@ -416,8 +419,8 @@ public class MinionCraftingMenu implements Listener {
 
 
     private void handleCraft(Player player, Inventory inv) {
-        FileConfiguration config = itemsadder_topminions.getCraftingConfig();
-        FileConfiguration messages = itemsadder_topminions.getMessagesConfig();
+        FileConfiguration config = ConfigHandler.getCrafting();
+        FileConfiguration messages = ConfigHandler.getMessages();
         String recipeKey = lastRecipeKey.get(player.getUniqueId());
         if (recipeKey == null) return;
 

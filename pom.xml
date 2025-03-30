@@ -6,7 +6,7 @@
 
     <groupId>com</groupId>
     <artifactId>itemsadder_topminions</artifactId>
-    <version>3.0.1</version>
+    <version>3.0.2</version>
     <packaging>jar</packaging>
 
     <name>itemsadder_topminions</name>
@@ -61,10 +61,6 @@
             <id>sonatype</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
-        <repository>
-            <id>mojang</id>
-            <url>https://libraries.minecraft.net/</url>
-        </repository>
 
 
 
@@ -91,13 +87,5 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/TopMinion.jar</systemPath>
         </dependency>
-        <dependency>
-            <groupId>com.mojang</groupId>
-            <artifactId>authlib</artifactId>
-            <version>1.5.25</version>
-        </dependency>
-
-
-
     </dependencies>
 </project>
