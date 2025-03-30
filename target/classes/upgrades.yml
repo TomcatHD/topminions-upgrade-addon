@@ -10,11 +10,10 @@ upgrades:
           - slot: 11
             display_name: "&a⬆ Upgrade to Level 2"
             material: EMERALD_BLOCK
+            type: upgrade_button
             lore:
               - "&7Upgrade your minion to level 2"
               - "&fRequires:"
-              - "&f- 64 Rotten Flesh"
-              - "&f- 1 Zombie Core"
             action: "upgrade"
 
           - slot: 15
@@ -38,6 +37,7 @@ upgrades:
           - slot: 11
             display_name: "&a⬆ Upgrade to Level 3"
             material: DIAMOND_BLOCK
+            type: upgrade_button
             lore:
               - "&7Upgrade your minion to level 3"
               - "&fRequires:"
@@ -54,7 +54,61 @@ upgrades:
             action: "craft_slayer_zombie_2"
 
         upgrade-requirements:
-          - item: "minion#SLAYER#ZOMBIE#2"
+          - item: "minion#ZOMBIE#SLAYER#2"
             amount: 1
-          - item: "itemsadder:zombie_core"
+          - item: "iasurvival:arkaner_bruchstein"
+            amount: 20
+          - item: "OAK_LOG"
+            amount: 20
+      3:
+        items:
+          - slot: 11
+            display_name: "&a⬆ Upgrade to Level 3"
+            material: DIAMOND_BLOCK
+            type: upgrade_button
+            lore:
+              - "&7Upgrade your minion to level 3"
+              - "&fRequires:"
+              - "&f- 1 Minion Lv.2"
+              - "&f- 2 Zombie Cores"
+            action: "upgrade"
+
+          - slot: 15
+            display_name: "&6Craft Another Minion"
+            material: CRAFTING_TABLE
+            lore:
+              - "&7Click to open the crafting interface"
+              - "&fLevel 2 Minion"
+            action: "craft_slayer_zombie_2"
+
+        upgrade-requirements:
+          - item: "minion#ZOMBIE#SLAYER#3"
+            amount: 1
+          - item: "iasurvival:arkaner_bruchstein"
+            amount: 2
+      4:
+        items:
+          - slot: 11
+            display_name: "&a⬆ Upgrade to Level 3"
+            material: DIAMOND_BLOCK
+            type: upgrade_button
+            lore:
+              - "&7Upgrade your minion to level 3"
+              - "&fRequires:"
+              - "&f- 1 Minion Lv.2"
+              - "&f- 2 Zombie Cores"
+            action: "upgrade"
+
+          - slot: 15
+            display_name: "&6Craft Another Minion"
+            material: CRAFTING_TABLE
+            lore:
+              - "&7Click to open the crafting interface"
+              - "&fLevel 2 Minion"
+            action: "craft_slayer_zombie_2"
+
+        upgrade-requirements:
+          - item: "minion#ZOMBIE#SLAYER#1"
+            amount: 1
+          - item: "iasurvival:arkaner_bruchstein"
             amount: 2
