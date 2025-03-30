@@ -1,6 +1,6 @@
 # 🛠️ TopMinions Upgrade Addon – ItemsAdder Compatible
 
-A powerful upgrade and crafting system for [TopMinions](https://www.spigotmc.org/resources/topminions.106188/), fully compatible with [ItemsAdder](https://www.spigotmc.org/resources/itemsadder.73355/) and vanilla Minecraft items.
+A powerful upgrade and crafting system for [TopMinions](https://www.spigotmc.org/resources/topminions-%E2%9C%85-hypixel-minions-clone-%E2%9A%94%EF%B8%8F-%E2%9A%A1-very-optimized-%E2%9A%99%EF%B8%8Ffully-customizable-1-18-1-21-4.111627/), fully compatible with [ItemsAdder](https://www.spigotmc.org/resources/itemsadder.73355/) and vanilla Minecraft items.
 
 This addon **replaces the default upgrade UI** with a fully configurable system that supports custom items, dynamic recipes, and full GUI translations.
 
