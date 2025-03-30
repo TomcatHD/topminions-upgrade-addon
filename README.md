@@ -63,7 +63,7 @@ levels:
           amount: 1
   2:
     recipes:
-      zombie_slayer_minion_2:
+      slayer_zombie_minion_2:
         pattern:
           - "CAC"
           - "ABA"
@@ -73,7 +73,7 @@ levels:
             item: "iasurvival:arkaner_bruchstein"
             amount: 64
           B:
-            item: "minion#ZOMBIE#SLAYER#1"
+            item: "minion#ZOMBIE#SLAYER#2"
             amount: 1
           C:
             item: "OAK_LOG"
