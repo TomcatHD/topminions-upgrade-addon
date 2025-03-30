@@ -1,0 +1,9 @@
+com\itemsadder_topminions\ItemUtil.class
+com\itemsadder_topminions\MinionCraftingMenu.class
+com\itemsadder_topminions\itemsadder_topminions.class
+com\itemsadder_topminions\UpgradeMenu.class
+com\itemsadder_topminions\MinionCraftingListener.class
+com\itemsadder_topminions\UpgradeMenuListener.class
+com\itemsadder_topminions\MinionUpgradeListener.class
+com\itemsadder_topminions\ReloadCommand.class
+com\itemsadder_topminions\ItemsAdderProvider.class

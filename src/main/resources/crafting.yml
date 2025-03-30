@@ -1,0 +1,44 @@
+gui:
+  title: "&8Craft Minion"
+
+levels:
+  1:
+    recipes:
+      slayer_zombie_minion_1:
+        pattern:
+          - "XAX"
+          - "ABA"
+          - "XCX"
+        ingredients:
+          A:
+            item: "iasurvival:arkaner_bruchstein"
+            amount: 64
+          B:
+            item: "minion#ZOMBIE#SLAYER#1"
+            amount: 1
+          C:
+            item: "OAK_LOG"
+            amount: 1
+        result:
+          item: "minion#ZOMBIE#SLAYER#1"
+          amount: 1
+  2:
+    recipes:
+      zombie_slayer_minion_2:
+        pattern:
+          - "CAC"
+          - "ABA"
+          - "CAC"
+        ingredients:
+          A:
+            item: "iasurvival:arkaner_bruchstein"
+            amount: 64
+          B:
+            item: "minion#ZOMBIE#SLAYER#1"
+            amount: 1
+          C:
+            item: "OAK_LOG"
+            amount: 1
+        result:
+          item: "minion#ZOMBIE#SLAYER#2"
+          amount: 1

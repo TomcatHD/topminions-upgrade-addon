@@ -1,0 +1,35 @@
+prefix: "&7[&eMinions&7] "
+
+upgrade-success: "&a✅ Minion upgraded to level {level}!"
+upgrade-fail: "&cNo upgrade defined for this level."
+missing-item: "&cMissing: {amount}x {item}"
+minion-not-found: "&cMinion context not found."
+gui:
+  requirement-lore: "%status% %name% x%amount% | (%found%)"
+  requirements-title: "&7Requirements:"
+
+minion-display-names:
+  ZOMBIE: "&aZombie Minion &7(Level {level})"
+  SKELETON: "&bSkeleton Minion &7(Level {level})"
+  FARMER: "&eFarmer Minion &7(Level {level})"
+
+minion-heads:
+  ZOMBIE: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7In..."
+  SKELETON: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7In..."
+
+craft-button:
+  ready:
+    name: "&a&l✔ Craft Minion"
+    lore:
+      - "&7Click to craft the minion"
+  not-ready:
+    name: "&c&l✖ Craft Minion"
+    lore:
+      - "&7Place all required items"
+
+  back:
+    name: "&cBack to Upgrade Menu"
+
+crafting:
+      success: "&a✔ Minion successfully crafted!"
+      failed: "&cYou have not placed the required items in the correct slots."
