@@ -28,6 +28,7 @@ This addon **replaces the default upgrade UI** with a fully configurable system 
 - `crafting.yml` – Pattern-based crafting recipes for minions
 - `messages.yml` – GUI names, button texts, lore, feedback messages
 - `items.yml` – Optional ItemsAdder item definitions
+- to `reload` all files use the command `/iatopminions reload`
 
 ## 📋 Usage
 
