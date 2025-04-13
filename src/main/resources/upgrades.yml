@@ -1,3 +1,12 @@
+global-crafting-button:
+  enabled: true
+  slot: 22
+  display_name: "&aGlobal Crafting"
+  material: CRAFTING_TABLE
+  lore:
+    - "&7Access a list of global craftable items."
+    - "&eAvailable from any minion."
+
 upgrades:
   slayer_zombie:
     gui:

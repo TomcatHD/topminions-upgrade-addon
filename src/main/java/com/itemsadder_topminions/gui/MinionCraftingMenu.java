@@ -151,14 +151,30 @@ public class MinionCraftingMenu implements Listener {
 
     public static void openCraftingGUI(Player player, String type, String material, int level) {
         FileConfiguration config = ConfigHandler.getCrafting();
-        String recipeKey = type.toLowerCase() + "_" + material.toLowerCase() + "_minion_" + level;
-        String key = "levels." + level + ".recipes." + recipeKey;
 
-        ConfigurationSection recipeSection = config.getConfigurationSection(key);
-        if (recipeSection == null) {
-            player.sendMessage(ChatColor.RED + "Crafting recipe not found: " + key);
-            return;
+
+        String key;
+        ConfigurationSection recipeSection;
+
+        if ("global".equalsIgnoreCase(type)) {
+            key = "global-crafting.recipes." + material;
+            recipeSection = config.getConfigurationSection(key);
+            if (recipeSection == null) {
+                player.sendMessage(ChatColor.RED + "Global crafting recipe not found: " + key);
+                return;
+            }
+        } else {
+            String recipeKey = type.toLowerCase() + "_" + material.toLowerCase() + "_minion_" + level;
+            key = "levels." + level + ".recipes." + recipeKey;
+            recipeSection = config.getConfigurationSection(key);
+            if (recipeSection == null) {
+                player.sendMessage(ChatColor.RED + "Crafting recipe not found: " + key);
+                return;
+            }
         }
+
+        lastRecipeKey.put(player.getUniqueId(), key);
+
 
         ConfigurationSection ingredientsSection = recipeSection.getConfigurationSection("ingredients");
         if (ingredientsSection == null) {
@@ -448,8 +464,7 @@ public class MinionCraftingMenu implements Listener {
                     meta.getPersistentDataContainer().set(minionKey, PersistentDataType.STRING, minionId);
                     check.setItemMeta(meta);
                 }
-            }
-            else {
+            } else {
                 Material mat = Material.matchMaterial(itemId);
                 check = mat != null ? new ItemStack(mat) : null;
             }
@@ -477,10 +492,8 @@ public class MinionCraftingMenu implements Listener {
         }
 
         if (!matches) {
-            // Failure message
             player.sendMessage(ChatColor.translateAlternateColorCodes('&',
                     messages.getString("crafting.failed", "&cYou have not placed the required items in the correct slots.")));
-
             return;
         }
 
@@ -502,18 +515,45 @@ public class MinionCraftingMenu implements Listener {
         String resultId = recipeSection.getString("result.item");
         int resultAmount = recipeSection.getInt("result.amount", 1);
 
-        String[] parts = resultId.split("#");
-        String material = parts[1];
-        String type = parts[2];
-        int level = Integer.parseInt(parts[3]);
+        if (resultId.startsWith("minion#")) {
+            String[] parts = resultId.split("#");
+            if (parts.length < 4) {
+                player.sendMessage(ChatColor.RED + "Invalid minion result format: " + resultId);
+                return;
+            }
+            String material = parts[1];
+            String type = parts[2];
+            int level = Integer.parseInt(parts[3]);
 
-        String command = String.format("topminion giveminion %s %s %d %s", type, material, level, player.getName());
-        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
+            String command = String.format("topminion giveminion %s %s %d %s", type, material, level, player.getName());
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
+        } else {
+            // Handle vanilla or ItemsAdder items
+            ItemStack resultItem;
+            if (resultId.contains(":")) {
+                CustomStack cs = CustomStack.getInstance(resultId);
+                resultItem = cs != null ? cs.getItemStack().clone() : null;
+            } else {
+                Material mat = Material.matchMaterial(resultId.toUpperCase());
+                resultItem = mat != null ? new ItemStack(mat) : null;
+            }
+
+            if (resultItem == null || resultItem.getType() == Material.AIR) {
+                player.sendMessage(ChatColor.RED + "Invalid result item: " + resultId);
+                return;
+            }
+
+            resultItem.setAmount(resultAmount);
+            player.getInventory().addItem(resultItem);
+        }
+
+
         player.sendMessage(ChatColor.translateAlternateColorCodes('&',
                 messages.getString("crafting.success", "&a✔ Minion successfully crafted!")));
 
         player.closeInventory();
     }
+
 
     private boolean isMatch(ItemStack required, ItemStack actual) {
         if (required == null || actual == null) return false;

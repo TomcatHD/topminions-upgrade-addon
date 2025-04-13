@@ -1,23 +1,67 @@
 gui:
-  title: "&8Craft Minion"
+  title: "&8Minion Craften"
+
+global-crafting:
+  title: "&6Global Crafting"
+  size: 27
+  recipes:
+    emerald_from_wood:
+      slot: 0
+      display_item: "EMERALD"
+      display_name: "&aEmerald from Wood"
+      lore:
+        - "&7Convert logs into treasure!"
+      pattern:
+        - "AXA"
+        - "XBX"
+        - "AXA"
+      ingredients:
+        A:
+          item: "iasurvival:verzauberter_bruchstein"
+          amount: 4
+        B:
+          item: "DIAMOND"
+          amount: 1
+      result:
+        item: "iasurvival:arkaner_bruchstein"
+        amount: 1
+
+    soul_blade:
+      slot: 1
+      display_item: "NETHERITE_SWORD"
+      display_name: "&cSoul Blade"
+      lore:
+        - "&7Craft a powerful blade"
+        - "&7from netherite and souls"
+      pattern:
+        - "NSN"
+        - "NSN"
+        - "NNN"
+      ingredients:
+        S:
+          item: "SOUL_SAND"
+          amount: 1
+        N:
+          item: "NETHERITE_INGOT"
+          amount: 1
+      result:
+        item: "NETHERITE_SWORD"
+        amount: 1
 
 levels:
   1:
     recipes:
       slayer_zombie_minion_1:
         pattern:
-          - "XAX"
+          - "AAA"
           - "ABA"
-          - "XCX"
+          - "AAA"
         ingredients:
           A:
-            item: "iasurvival:arkaner_bruchstein"
-            amount: 64
+            item: "COBBLESTONE"
+            amount: 10
           B:
-            item: "minion#ZOMBIE#SLAYER#1"
-            amount: 1
-          C:
-            item: "OAK_LOG"
+            item: "WOODEN_PICKAXE"
             amount: 1
         result:
           item: "minion#ZOMBIE#SLAYER#1"
@@ -26,6 +70,57 @@ levels:
     recipes:
       slayer_zombie_minion_2:
         pattern:
+          - "AAA"
+          - "ABA"
+          - "AAA"
+        ingredients:
+          A:
+            item: "COBBLESTONE"
+            amount: 20
+          B:
+            item: "minion#ZOMBIE#SLAYER#1"
+            amount: 1
+        result:
+          item: "minion#ZOMBIE#SLAYER#2"
+          amount: 1
+  3:
+    recipes:
+      slayer_zombie_minion_3:
+        pattern:
+          - "AAA"
+          - "ABA"
+          - "AAA"
+        ingredients:
+          A:
+            item: "COBBLESTONE"
+            amount: 40
+          B:
+            item: "minion#ZOMBIE#SLAYER#2"
+            amount: 1
+        result:
+          item: "minion#ZOMBIE#SLAYER#3"
+          amount: 1
+  4:
+    recipes:
+      slayer_zombie_minion_4:
+        pattern:
+          - "AAA"
+          - "ABA"
+          - "AAA"
+        ingredients:
+          A:
+            item: "COBBLESTONE"
+            amount: 64
+          B:
+            item: "minion#ZOMBIE#SLAYER#3"
+            amount: 1
+        result:
+          item: "minion#ZOMBIE#SLAYER#4"
+          amount: 1
+  5:
+    recipes:
+      slayer_zombie_minion_5:
+        pattern:
           - "CAC"
           - "ABA"
           - "CAC"
@@ -34,7 +129,7 @@ levels:
             item: "iasurvival:arkaner_bruchstein"
             amount: 64
           B:
-            item: "minion#ZOMBIE#SLAYER#2"
+            item: "minion#ZOMBIE#SLAYER#1"
             amount: 1
           C:
             item: "OAK_LOG"

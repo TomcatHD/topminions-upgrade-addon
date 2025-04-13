@@ -14,6 +14,8 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.NamespacedKey;
 import com.itemsadder_topminions.util.ItemUtil;
 import com.itemsadder_topminions.config.ConfigHandler;
+import com.itemsadder_topminions.gui.GlobalCraftingMenu;
+
 
 
 import com.sarry20.topminion.models.minion.MinionObj;
@@ -102,6 +104,28 @@ public class UpgradeMenu {
                 meta.setLore(displayLore);
                 icon.setItemMeta(meta);
                 gui.setItem(slot, icon);
+            }
+        }
+// Inject global crafting button if enabled
+        if (config.getBoolean("global-crafting-button.enabled", false)) {
+            int slot = config.getInt("global-crafting-button.slot", 22);
+            String name = config.getString("global-crafting-button.display_name", "&aGlobal Crafting");
+            String materialName = config.getString("global-crafting-button.material", "CRAFTING_TABLE");
+            List<String> loreList = config.getStringList("global-crafting-button.lore");
+
+            Material material = Material.matchMaterial(materialName);
+            if (material != null) {
+                ItemStack button = new ItemStack(material);
+                ItemMeta meta = button.getItemMeta();
+                if (meta != null) {
+                    meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
+                    List<String> coloredLore = loreList.stream()
+                            .map(line -> ChatColor.translateAlternateColorCodes('&', line))
+                            .toList();
+                    meta.setLore(coloredLore);
+                    button.setItemMeta(meta);
+                    gui.setItem(slot, button);
+                }
             }
         }
 

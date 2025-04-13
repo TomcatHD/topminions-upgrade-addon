@@ -33,6 +33,19 @@ public class UpgradeMenuListener implements Listener {
         MinionObj minion = UpgradeMenu.minionContext.get(player.getUniqueId());
         if (minion == null) return;
 
+        // Check if the global crafting button was clicked
+        FileConfiguration upgrades = ConfigHandler.getUpgrades();
+        if (upgrades.getBoolean("global-crafting-button.enabled", false)) {
+            int expectedSlot = upgrades.getInt("global-crafting-button.slot", 22);
+            if (event.getSlot() == expectedSlot) {
+                event.setCancelled(true); // Prevent item pickup
+                player.closeInventory(); // Optional: Close the upgrade GUI
+                GlobalCraftingMenu.open(player); // Open the global menu
+                return;
+            }
+        }
+
+
         int currentLevel = minion.getLevel();
         int nextLevel = currentLevel + 1;
 

@@ -4,6 +4,7 @@ import com.itemsadder_topminions.command.ReloadCommand;
 import com.itemsadder_topminions.gui.MinionCraftingListener;
 import com.itemsadder_topminions.gui.MinionCraftingMenu;
 import com.itemsadder_topminions.gui.UpgradeMenuListener;
+import com.itemsadder_topminions.gui.GlobalCraftingMenu;
 import com.itemsadder_topminions.listener.ItemsAdderProvider;
 import com.itemsadder_topminions.listener.MinionUpgradeListener;
 import org.bukkit.Bukkit;
@@ -27,6 +28,8 @@ public class itemsadder_topminions extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new MinionUpgradeListener(), this);
         Bukkit.getPluginManager().registerEvents(new MinionCraftingMenu(), this);
         Bukkit.getPluginManager().registerEvents(new MinionCraftingListener(), this);
+        Bukkit.getPluginManager().registerEvents(new GlobalCraftingMenu(), this);
+
 
         getCommand("iatopminions").setExecutor(new ReloadCommand());
 
