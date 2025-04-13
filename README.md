@@ -7,6 +7,7 @@ This addon **replaces the default upgrade UI** with a fully configurable system 
 ## ✨ Features
 
 - 🧱 **Minion Crafting GUI** with ghost items and slot locking
+- 🌍 **Global Crafting Recipes** – general recipes for any item (not just minions)
 - 📈 **Custom Upgrade Menus** using ItemsAdder or vanilla items
 - 🌐 **100% Translatable** via `messages.yml`
 - 🎨 **Supports ItemsAdder CustomStacks** (e.g. `myplugin:gold_plate`)
@@ -25,14 +26,14 @@ This addon **replaces the default upgrade UI** with a fully configurable system 
 ## 📂 Files
 
 - `upgrade.yml` – Upgrade GUI layout, slots, and level logic
-- `crafting.yml` – Pattern-based crafting recipes for minions
+- `crafting.yml` – Pattern-based minion & global crafting recipes
 - `messages.yml` – GUI names, button texts, lore, feedback messages
 - `items.yml` – Optional ItemsAdder item definitions
 - to `reload` all files use the command `/iatopminions reload`
 
 ## 📋 Usage
 
-- Players use a GUI to craft minions using **patterned recipes**
+- Players open a **GUI to craft minions or global items**
 - Upgrade menus dynamically show what's needed to level up
 - Fully translatable and intuitive interface
 - Works with both **ItemsAdder** and **vanilla** items
