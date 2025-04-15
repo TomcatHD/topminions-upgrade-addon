@@ -31,6 +31,12 @@ This addon **replaces the default upgrade UI** with a fully configurable system 
 - `items.yml` – Optional ItemsAdder item definitions
 - to `reload` all files use the command `/iatopminions reload`
 
+## 🧪 Commands
+
+- `/globalcraft` – Open the global crafting overview menu
+- `/minioncraft <type> <material> <level>` – Open a specific minion crafting GUI
+- Example: `/minioncraft slayer zombie 1`
+
 ## 📋 Usage
 
 - Players open a **GUI to craft minions or global items**
