@@ -9,6 +9,12 @@ commands:
     description: Reload config files for ItemsAdder TopMinions integration
     usage: /<command> reload
     permission: itemsadder_topminions.reload
+  globalcraft:
+    description: Opens the global crafting menu
+    usage: /globalcraft
+  minioncraft:
+    description: Opens a specific minion crafting menu
+    usage: /minioncraft <type> <material> <level>
 
 permissions:
   itemsadder_topminions.reload:

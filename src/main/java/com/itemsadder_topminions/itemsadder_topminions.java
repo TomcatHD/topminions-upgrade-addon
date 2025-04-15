@@ -1,5 +1,7 @@
 package com.itemsadder_topminions;
 
+import com.itemsadder_topminions.command.GlobalCraftCommand;
+import com.itemsadder_topminions.command.MinionCraftCommand;
 import com.itemsadder_topminions.command.ReloadCommand;
 import com.itemsadder_topminions.gui.MinionCraftingListener;
 import com.itemsadder_topminions.gui.MinionCraftingMenu;
@@ -32,6 +34,10 @@ public class itemsadder_topminions extends JavaPlugin {
 
 
         getCommand("iatopminions").setExecutor(new ReloadCommand());
+        getCommand("globalcraft").setExecutor(new GlobalCraftCommand());
+        getCommand("minioncraft").setExecutor(new MinionCraftCommand());
+
+
 
         getLogger().info(ChatColor.GREEN + "ItemsAdder_TopMinions has been enabled.");
     }

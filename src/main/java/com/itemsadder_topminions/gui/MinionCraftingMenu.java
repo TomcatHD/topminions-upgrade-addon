@@ -38,6 +38,13 @@ public class MinionCraftingMenu implements Listener {
     private static final Map<UUID, String> lastRecipeKey = new HashMap<>();
     private static final int[] ghostSlots = {10, 11, 12, 19, 20, 21, 28, 29, 30};
     private static final int[] inputSlots = {14, 15, 16, 23, 24, 25, 32, 33, 34};
+    private static final Set<UUID> globalCraftingPlayers = new HashSet<>();
+    private static final Set<UUID> manualOpenPlayers = new HashSet<>();
+    public static void markManualOpen(Player player) {
+        manualOpenPlayers.add(player.getUniqueId());
+    }
+
+
 
     @EventHandler
     public void onCraftingClick(InventoryClickEvent event) {
@@ -96,10 +103,20 @@ public class MinionCraftingMenu implements Listener {
             }
             if (slot == 49) {
                 event.setCancelled(true);
-                MinionObj minion = UpgradeMenu.minionContext.get(player.getUniqueId());
-                if (minion != null) UpgradeMenu.openUpgradeGUI(player, minion);
+                UUID uuid = player.getUniqueId();
+                if (manualOpenPlayers.contains(uuid)) {
+                    manualOpenPlayers.remove(uuid); // Clean up
+                    player.closeInventory();
+                } else if (globalCraftingPlayers.contains(uuid)) {
+                    GlobalCraftingMenu.open(player);
+                } else {
+                    MinionObj minion = UpgradeMenu.minionContext.get(uuid);
+                    if (minion != null) UpgradeMenu.openUpgradeGUI(player, minion);
+                }
+
                 return;
             }
+
         }
 
         Bukkit.getScheduler().runTaskLater(itemsadder_topminions.getInstance(), () -> {
@@ -145,6 +162,10 @@ public class MinionCraftingMenu implements Listener {
                 player.getInventory().addItem(item);
             }
         }
+        globalCraftingPlayers.remove(player.getUniqueId());
+        manualOpenPlayers.remove(player.getUniqueId());
+
+
     }
 
 
@@ -163,7 +184,9 @@ public class MinionCraftingMenu implements Listener {
                 player.sendMessage(ChatColor.RED + "Global crafting recipe not found: " + key);
                 return;
             }
+            globalCraftingPlayers.add(player.getUniqueId()); // ✅ ADD THIS
         } else {
+            globalCraftingPlayers.remove(player.getUniqueId()); // ✅ REMOVE FLAG
             String recipeKey = type.toLowerCase() + "_" + material.toLowerCase() + "_minion_" + level;
             key = "levels." + level + ".recipes." + recipeKey;
             recipeSection = config.getConfigurationSection(key);
