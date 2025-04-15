@@ -29,10 +29,10 @@ This addon **replaces the default upgrade UI** with a fully configurable system 
 - `crafting.yml` – Pattern-based minion & global crafting recipes
 - `messages.yml` – GUI names, button texts, lore, feedback messages
 - `items.yml` – Optional ItemsAdder item definitions
-- to `reload` all files use the command `/iatopminions reload`
+
 
 ## 🧪 Commands
-
+- `/iatopminions reload` reloads all configuration files
 - `/globalcraft` – Open the global crafting overview menu
 - `/minioncraft <type> <material> <level>` – Open a specific minion crafting GUI
 - Example: `/minioncraft slayer zombie 1`
