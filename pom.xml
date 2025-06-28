@@ -6,7 +6,7 @@
 
     <groupId>com</groupId>
     <artifactId>itemsadder_topminions</artifactId>
-    <version>3.0.3</version>
+    <version>3.0.5</version>
     <packaging>jar</packaging>
 
     <name>itemsadder_topminions</name>

@@ -105,9 +105,17 @@ public class MinionCraftingMenu implements Listener {
                 event.setCancelled(true);
                 UUID uuid = player.getUniqueId();
                 if (manualOpenPlayers.contains(uuid)) {
-                    manualOpenPlayers.remove(uuid); // Clean up
-                    player.closeInventory();
-                } else if (globalCraftingPlayers.contains(uuid)) {
+                    manualOpenPlayers.remove(uuid);
+
+                    String command = ConfigHandler.getConfig().getString("back-button.manual-open-command", "");
+                    if (command.isEmpty()) {
+                        player.closeInventory();
+                    } else {
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replace("{player}", player.getName()));
+                    }
+                    return;
+                }
+                else if (globalCraftingPlayers.contains(uuid)) {
                     GlobalCraftingMenu.open(player);
                 } else {
                     MinionObj minion = UpgradeMenu.minionContext.get(uuid);

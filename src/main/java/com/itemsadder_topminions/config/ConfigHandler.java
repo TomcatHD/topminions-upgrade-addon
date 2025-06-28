@@ -23,11 +23,15 @@ public class ConfigHandler {
         craftingFile = new File(plugin.getDataFolder(), "crafting.yml");
         messagesFile = new File(plugin.getDataFolder(), "messages.yml");
         itemsFile = new File(plugin.getDataFolder(), "items.yml");
+        mainConfigFile = new File(plugin.getDataFolder(), "config.yml");
+
+
 
         if (!upgradesFile.exists()) plugin.saveResource("upgrades.yml", false);
         if (!craftingFile.exists()) plugin.saveResource("crafting.yml", false);
         if (!messagesFile.exists()) plugin.saveResource("messages.yml", false);
         if (!itemsFile.exists()) plugin.saveResource("items.yml", false);
+        if (!mainConfigFile.exists()) plugin.saveResource("config.yml", false);
 
         reload();
     }
@@ -37,6 +41,8 @@ public class ConfigHandler {
         craftingConfig = YamlConfiguration.loadConfiguration(craftingFile);
         messagesConfig = YamlConfiguration.loadConfiguration(messagesFile);
         itemsConfig = YamlConfiguration.loadConfiguration(itemsFile);
+        mainConfig = YamlConfiguration.loadConfiguration(mainConfigFile);
+
     }
 
     public static FileConfiguration getUpgrades() {
@@ -54,4 +60,10 @@ public class ConfigHandler {
     public static FileConfiguration getItems() {
         return itemsConfig;
     }
+    public static FileConfiguration getConfig() {return mainConfig;
+    }
+
+
+    private static FileConfiguration mainConfig;
+    private static File mainConfigFile;
 }
